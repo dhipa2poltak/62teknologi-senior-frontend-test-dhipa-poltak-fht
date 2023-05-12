@@ -1,0 +1,23 @@
+pluginManagement {
+  repositories {
+    gradlePluginPortal()
+    google()
+    mavenCentral()
+  }
+}
+dependencyResolutionManagement {
+  repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+  repositories {
+    google()
+    mavenCentral()
+  }
+}
+rootProject.name = "Demo62Teknologi"
+include ':app'
+include ':data'
+include ':domain'
+include ':framework'
+include ':features:feature_splash'
+include ':features:feature_error_message'
+include ':features:feature_list'
+include ':features:feature_details'

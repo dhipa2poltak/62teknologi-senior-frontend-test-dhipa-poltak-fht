@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/splash_fragment">
+
+  <fragment
+      android:id="@+id/splash_fragment"
+      android:name="com.dpfht.android.demo62teknologi.feature_splash.SplashFragment"
+      android:layout="@layout/fragment_splash" />
+
+  <fragment
+      android:id="@+id/business_list_fragment"
+      android:name="com.dpfht.android.demo62teknologi.feature_list.view.BusinessListFragment"
+      android:layout="@layout/fragment_business_list" />
+
+  <fragment
+      android:id="@+id/business_details_fragment"
+      android:name="com.dpfht.android.demo62teknologi.feature_details.view.BusinessDetailsFragment"
+      tools:layout="@layout/fragment_business_details">
+
+    <deepLink
+        app:uri="android-app://demo62teknologi.dpfht.com/business_details_fragment?business_id={business_id}" />
+
+    <argument
+        android:name="business_id"
+        android:defaultValue="id"
+        app:argType="string" />
+
+  </fragment>
+
+  <dialog
+      android:id="@+id/errorMessageDialogFragment"
+      android:name="com.dpfht.android.demo62teknologi.feature_error_message.ErrorMessageDialogFragment"
+      android:label="fragment_error_message_dialog"
+      tools:layout="@layout/fragment_error_message_dialog">
+
+    <deepLink
+        app:uri="android-app://demo62teknologi.dpfht.com/error_message_dialog_fragment?message={message}" />
+
+    <argument
+        android:name="message"
+        android:defaultValue="no message"
+        app:argType="string"  />
+  </dialog>
+</navigation>

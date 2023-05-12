@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="text_business">Business</string>
+  <string name="text_loading">loading…</string>
+
+  <string name="title_message">Message</string>
+  <string name="text_ok">OK</string>
+
+  <string name="desc_image_business">Desc Image Business</string>
+  <string name="desc_image_user">Desc Image User</string>
+
+  <string name="text_business_list">Business List</string>
+  <string name="text_search">Search</string>
+  <string name="text_search_business">Search Business</string>
+  <string name="text_location">Location</string>
+  <string name="text_term">Term</string>
+  <string name="text_cancel">Cancel</string>
+  <string name="text_error_location">Location is required</string>
+
+  <string name="text_show_location_on_map">Show Location on Map</string>
+  <string name="text_review">Review</string>
+  <string name="text_zero">0</string>
+
+  <string name="text_no_data">currently no data available</string>
+</resources>

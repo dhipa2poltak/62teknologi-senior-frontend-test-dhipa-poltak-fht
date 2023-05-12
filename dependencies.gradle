@@ -1,0 +1,48 @@
+
+ext {
+
+  gsonVersion = '2.9.0'
+  annotationVersion = '1.4.0'
+
+  navigationFragmentVersion = '2.5.3'
+  navigationUIVersion = '2.5.3'
+  retrofitConverterGsonVersion = '2.9.0'
+  okHttpVersion = '4.9.3'
+  okHttpLoggingInterceptorVersion = '4.9.1'
+  daggerVersion = '2.42'
+  daggerCompilerVersion = '2.42'
+  picassoVersion = '2.8'
+
+  dataDependencies = [
+      gson: "com.google.code.gson:gson:${gsonVersion}",
+      annotation: "androidx.annotation:annotation:${annotationVersion}"
+  ]
+
+  frameworkDependencies = [
+      navigationFragment: "androidx.navigation:navigation-fragment-ktx:${navigationFragmentVersion}",
+      navigationUI: "androidx.navigation:navigation-ui-ktx:${navigationUIVersion}",
+      gson: "com.google.code.gson:gson:${gsonVersion}",
+      retrofitConverterGson: "com.squareup.retrofit2:converter-gson:${retrofitConverterGsonVersion}",
+      okHttp: "com.squareup.okhttp3:okhttp:${okHttpVersion}",
+      okHttpLoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:${okHttpLoggingInterceptorVersion}",
+      dagger: "com.google.dagger:dagger:${daggerVersion}",
+      daggerCompiler: "com.google.dagger:dagger-compiler:${daggerCompilerVersion}"
+  ]
+
+  featureSplashDependencies = [
+      dagger: "com.google.dagger:dagger:${daggerVersion}",
+      daggerCompiler: "com.google.dagger:dagger-compiler:${daggerCompilerVersion}"
+  ]
+
+  featureListDependencies = [
+      dagger: "com.google.dagger:dagger:${daggerVersion}",
+      daggerCompiler: "com.google.dagger:dagger-compiler:${daggerCompilerVersion}",
+      picasso: "com.squareup.picasso:picasso:${picassoVersion}"
+  ]
+
+  featureDetailsDependencies = [
+      dagger: "com.google.dagger:dagger:${daggerVersion}",
+      daggerCompiler: "com.google.dagger:dagger-compiler:${daggerCompilerVersion}",
+      picasso: "com.squareup.picasso:picasso:${picassoVersion}"
+  ]
+}

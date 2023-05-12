@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <TextView
+      android:id="@+id/tv_title"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:textSize="24sp"
+      android:textStyle="bold"
+      android:layout_marginTop="10dp"
+      android:gravity="center"
+      tools:text="title"/>
+
+  <androidx.viewpager.widget.ViewPager
+      android:id="@+id/my_pager"
+      android:layout_width="0dp"
+      android:layout_height="200dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginHorizontal="10dp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_title"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0" />
+
+  <com.google.android.material.tabs.TabLayout
+      android:id="@+id/my_tablayout"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/my_pager"
+      app:tabGravity="center"
+      app:tabBackground="@drawable/indicator_selector"
+      app:tabIndicatorHeight="0dp">
+  </com.google.android.material.tabs.TabLayout>
+
+  <RatingBar
+      android:id="@+id/rb_business"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/my_tablayout"
+      app:layout_constraintEnd_toEndOf="parent"
+      style="?android:attr/ratingBarStyleSmall"/>
+
+  <TextView
+      android:id="@+id/tv_rating"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:text="@string/text_zero"
+      android:textSize="16sp"
+      android:gravity="center"
+      android:layout_marginTop="10dp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/rb_business"
+      app:layout_constraintEnd_toEndOf="parent"/>
+
+  <TextView
+      android:id="@+id/tv_show_location_on_map"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/text_show_location_on_map"
+      android:layout_marginTop="10dp"
+      android:textColor="#FF0000FF"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_rating"
+      app:layout_constraintEnd_toEndOf="parent" />
+
+  <View
+      android:id="@+id/vw_line"
+      android:layout_width="0dp"
+      android:layout_height="1dp"
+      android:background="@android:color/black"
+      android:layout_marginTop="10dp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_show_location_on_map"
+      app:layout_constraintEnd_toEndOf="parent"/>
+
+  <TextView
+      android:id="@+id/tv_title_review"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:text="@string/text_review"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/vw_line"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:textSize="24sp"
+      android:textStyle="bold"
+      android:layout_marginTop="10dp"
+      android:gravity="center"/>
+
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/rv_reviews"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_title_review"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintBottom_toBottomOf="parent"
+      android:layout_marginTop="10dp"
+      android:paddingStart="10dp"
+      android:paddingEnd="10dp"
+      app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+  <TextView
+      android:id="@+id/tv_no_data"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:text="@string/text_no_data"
+      android:gravity="center"
+      app:layout_constraintStart_toStartOf="@+id/rv_reviews"
+      app:layout_constraintTop_toTopOf="@+id/rv_reviews"
+      app:layout_constraintEnd_toEndOf="@+id/rv_reviews"
+      app:layout_constraintBottom_toBottomOf="@+id/rv_reviews"/>
+
+  <ProgressBar
+      android:id="@+id/pb_loading"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintStart_toStartOf="@+id/rv_reviews"
+      app:layout_constraintTop_toTopOf="@+id/rv_reviews"
+      app:layout_constraintEnd_toEndOf="@+id/rv_reviews"
+      app:layout_constraintBottom_toBottomOf="@+id/rv_reviews"
+      android:visibility="gone"
+      tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
