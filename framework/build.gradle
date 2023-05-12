@@ -19,7 +19,7 @@ android {
     release {
       buildConfigField 'String', 'BASE_URL', SERVER_BASE_URL
 
-      minifyEnabled false
+      minifyEnabled true
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
     debug {
