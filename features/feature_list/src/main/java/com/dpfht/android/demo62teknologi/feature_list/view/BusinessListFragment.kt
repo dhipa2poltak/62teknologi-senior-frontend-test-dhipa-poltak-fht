@@ -98,8 +98,8 @@ class BusinessListFragment: BaseFragment<BusinessListViewModel>() {
     observeViewModel()
 
     if (viewModel.businesses.isEmpty()) {
-      viewModel.newSearchBusiness("NYC", "food")
-      showDescResult("NYC", "food")
+      viewModel.newSearchBusiness("NYC", "food", arrayListOf(false, false, false, false))
+      showDescResult("NYC", "food", arrayListOf(false, false, false, false))
     }
   }
 
@@ -149,11 +149,11 @@ class BusinessListFragment: BaseFragment<BusinessListViewModel>() {
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     when (item.itemId) {
       R.id.itm_search -> {
-        val fragment = SearchBusinessDialogFragment.newInstance(viewModel.location, viewModel.term)
+        val fragment = SearchBusinessDialogFragment.newInstance(viewModel.location, viewModel.term, viewModel.prices)
         fragment.onClickSearchCallback = object : OnClickSearchCallback {
-          override fun onClickSearch(location: String, term: String) {
-            showDescResult(location, term)
-            viewModel.newSearchBusiness(location, term)
+          override fun onClickSearch(location: String, term: String, prices: ArrayList<Boolean>) {
+            showDescResult(location, term, prices)
+            viewModel.newSearchBusiness(location, term, prices)
           }
         }
         fragment.show(requireActivity().supportFragmentManager, "search_business_dialog_fragment")
@@ -165,10 +165,25 @@ class BusinessListFragment: BaseFragment<BusinessListViewModel>() {
     return super.onOptionsItemSelected(item)
   }
 
-  private fun showDescResult(location: String, term: String) {
-    var msg = "showing result for location: $location"
+  private fun showDescResult(location: String, term: String, prices: ArrayList<Boolean>) {
+    var msg = "showing result for\nlocation: $location"
     if (term.isNotEmpty()) {
-      msg += " and term: $term"
+      msg += ", term: $term"
+    }
+
+    var textPrices = ""
+    for (i in 0 until prices.size) {
+      if (prices[i]) {
+        if (textPrices.isEmpty()) {
+          textPrices = "${i + 1}"
+        } else {
+          textPrices += ", ${i + 1}"
+        }
+      }
+    }
+
+    if (textPrices.isNotEmpty()) {
+      msg += ", price(s): ($textPrices)"
     }
 
     binding.tvDesc.text = msg

@@ -11,10 +11,11 @@ class SearchBusinessUseCaseImpl(
   override suspend fun invoke(
     location: String,
     term: String,
+    prices: List<Int>,
     sortBy: String,
     offset: Int,
     limit: Int
   ): Result<SearchBusinessDomain> {
-    return appRepository.searchBusiness(location, term, sortBy, offset, limit)
+    return appRepository.searchBusiness(location, term, prices, sortBy, offset, limit)
   }
 }

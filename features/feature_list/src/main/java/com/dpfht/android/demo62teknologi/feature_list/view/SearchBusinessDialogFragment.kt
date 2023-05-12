@@ -17,6 +17,7 @@ class SearchBusinessDialogFragment: DialogFragment() {
 
   private var location = ""
   private var term = ""
+  private var prices = arrayListOf(false, false, false, false)
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -34,6 +35,27 @@ class SearchBusinessDialogFragment: DialogFragment() {
     binding.etLocation.setText(location)
     binding.etTerm.setText(term)
 
+    binding.cb1.isChecked = prices[0]
+    binding.cb2.isChecked = prices[1]
+    binding.cb3.isChecked = prices[2]
+    binding.cb4.isChecked = prices[3]
+
+    binding.cb1.setOnCheckedChangeListener { _, isChecked ->
+      prices[0] = isChecked
+    }
+
+    binding.cb2.setOnCheckedChangeListener { _, isChecked ->
+      prices[1] = isChecked
+    }
+
+    binding.cb3.setOnCheckedChangeListener { _, isChecked ->
+      prices[2] = isChecked
+    }
+
+    binding.cb4.setOnCheckedChangeListener { _, isChecked ->
+      prices[3] = isChecked
+    }
+
     binding.btnCancel.setOnClickListener {
       dismiss()
     }
@@ -44,7 +66,7 @@ class SearchBusinessDialogFragment: DialogFragment() {
         term = binding.etTerm.text.toString().trim()
 
         dismiss()
-        onClickSearchCallback?.onClickSearch(location, term)
+        onClickSearchCallback?.onClickSearch(location, term, prices)
       }
     }
   }
@@ -70,14 +92,15 @@ class SearchBusinessDialogFragment: DialogFragment() {
   }
 
   interface OnClickSearchCallback {
-    fun onClickSearch(location: String, term: String)
+    fun onClickSearch(location: String, term: String, prices: ArrayList<Boolean>)
   }
 
   companion object {
-    fun newInstance(location: String, term: String): SearchBusinessDialogFragment {
+    fun newInstance(location: String, term: String, prices: ArrayList<Boolean>): SearchBusinessDialogFragment {
       val fragment = SearchBusinessDialogFragment()
       fragment.location = location
       fragment.term = term
+      fragment.prices = prices
 
       return fragment
     }

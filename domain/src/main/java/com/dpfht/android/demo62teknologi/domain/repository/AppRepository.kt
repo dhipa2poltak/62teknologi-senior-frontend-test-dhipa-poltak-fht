@@ -10,6 +10,7 @@ interface AppRepository {
  suspend fun searchBusiness(
   location: String,
   term: String,
+  prices: List<Int>,
   sortBy: String,
   offset: Int,
   limit: Int

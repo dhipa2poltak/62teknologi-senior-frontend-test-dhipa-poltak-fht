@@ -13,11 +13,12 @@ class AppRepositoryImpl(
   override suspend fun searchBusiness(
     location: String,
     term: String,
+    prices: List<Int>,
     sortBy: String,
     offset: Int,
     limit: Int
   ): Result<SearchBusinessDomain> {
-    return remoteDataSource.searchBusiness(location, term, sortBy, offset, limit)
+    return remoteDataSource.searchBusiness(location, term, prices, sortBy, offset, limit)
   }
 
   override suspend fun getBusinessById(id: String): Result<BusinessEntity> {

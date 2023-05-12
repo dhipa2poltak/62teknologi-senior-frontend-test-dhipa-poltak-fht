@@ -13,6 +13,7 @@ interface RestService {
   suspend fun searchBusiness(
     @Query("location") location: String,
     @Query("term") term: String,
+    @Query("price") prices: List<Int>,
     @Query("sort_by") sortBy: String,
     @Query("offset") offset: Int,
     @Query("limit") limit: Int

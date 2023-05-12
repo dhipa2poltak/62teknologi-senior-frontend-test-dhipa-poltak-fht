@@ -57,23 +57,69 @@
       app:layout_constraintTop_toBottomOf="@+id/tv_term"
       app:layout_constraintEnd_toEndOf="parent" />
 
+  <TextView
+      android:id="@+id/tv_prices"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Price"
+      android:layout_marginStart="10dp"
+      android:layout_marginTop="10dp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/et_term"/>
+
+  <CheckBox
+      android:id="@+id/cb_1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="$"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/tv_prices"
+      app:layout_constraintEnd_toStartOf="@+id/cb_2"/>
+
+  <CheckBox
+      android:id="@+id/cb_2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="$$"
+      app:layout_constraintStart_toEndOf="@+id/cb_1"
+      app:layout_constraintTop_toBottomOf="@+id/tv_prices"
+      app:layout_constraintEnd_toStartOf="@+id/cb_3"/>
+
+  <CheckBox
+      android:id="@+id/cb_3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="$$$"
+      app:layout_constraintStart_toEndOf="@+id/cb_2"
+      app:layout_constraintTop_toBottomOf="@+id/tv_prices"
+      app:layout_constraintEnd_toStartOf="@+id/cb_4"/>
+
+  <CheckBox
+      android:id="@+id/cb_4"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="$$$$"
+      app:layout_constraintStart_toEndOf="@+id/cb_3"
+      app:layout_constraintTop_toBottomOf="@+id/tv_prices"
+      app:layout_constraintEnd_toEndOf="parent"/>
+
   <Button
       android:id="@+id/btn_search"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:text="@string/text_search"
-      android:layout_margin="10dp"
+      android:layout_margin="20dp"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/et_term"
-      app:layout_constraintEnd_toStartOf="@+id/btn_cancel"/>
+      app:layout_constraintTop_toBottomOf="@+id/cb_1"
+      app:layout_constraintEnd_toStartOf="@+id/btn_cancel" />
 
   <Button
       android:id="@+id/btn_cancel"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:text="@string/text_cancel"
-      android:layout_margin="10dp"
+      android:layout_margin="20dp"
       app:layout_constraintStart_toEndOf="@+id/btn_search"
-      app:layout_constraintTop_toBottomOf="@+id/et_term"
-      app:layout_constraintEnd_toEndOf="parent"/>
+      app:layout_constraintTop_toBottomOf="@+id/cb_1"
+      app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

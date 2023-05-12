@@ -18,11 +18,12 @@ class RemoteDataSourceImpl(
   override suspend fun searchBusiness(
     location: String,
     term: String,
+    prices: List<Int>,
     sortBy: String,
     offset: Int,
     limit: Int
   ): Result<SearchBusinessDomain> {
-    return safeApiCall(Dispatchers.IO) { restService.searchBusiness(location, term, sortBy, offset, limit).toDomain() }
+    return safeApiCall(Dispatchers.IO) { restService.searchBusiness(location, term, prices, sortBy, offset, limit).toDomain() }
   }
 
   override suspend fun getBusinessById(id: String): Result<BusinessEntity> {

@@ -8,6 +8,7 @@ interface SearchBusinessUseCase {
   suspend operator fun invoke(
     location: String,
     term: String,
+    prices: List<Int>,
     sortBy: String,
     offset: Int,
     limit: Int

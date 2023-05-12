@@ -20,6 +20,7 @@ class BusinessListViewModel(
 
   var location = ""
   var term = ""
+  var prices = arrayListOf(false, false, false, false)
 
   private val _notifyClearDataView = MutableLiveData<Boolean>()
   val notifyClearDataView: LiveData<Boolean> = _notifyClearDataView
@@ -30,24 +31,32 @@ class BusinessListViewModel(
   private val _notifyItemInserted = MutableLiveData<Int>()
   val notifyItemInserted: LiveData<Int> = _notifyItemInserted
 
-  fun newSearchBusiness(location: String, term: String) {
+  fun newSearchBusiness(location: String, term: String, prices: ArrayList<Boolean>) {
     businesses.clear()
     _notifyClearDataView.postValue(true)
     _notifyNoBusinessData.postValue(true)
 
     this.location = location
     this.term = term
+    this.prices = prices
 
-    searchBusiness(location, term)
+    searchBusiness(location, term, prices)
   }
 
-  private fun searchBusiness(location: String, term: String) {
+  private fun searchBusiness(location: String, term: String, prices: ArrayList<Boolean>) {
 
     mIsShowDialogLoading.postValue(true)
     mIsLoadingData = true
 
     viewModelScope.launch {
-      when (val result = searchBusinessUseCase(location, term, "best_match", businesses.size, Constants.PAGING_LIMIT)) {
+      val arrPrice = arrayListOf<Int>()
+      for (i in 0 until prices.size) {
+        if (prices[i]) {
+          arrPrice.add(i + 1)
+        }
+      }
+
+      when (val result = searchBusinessUseCase(location, term, arrPrice.toList(), "best_match", businesses.size, Constants.PAGING_LIMIT)) {
         is Success -> {
           onSuccess(result.value.businesses)
         }
@@ -59,7 +68,7 @@ class BusinessListViewModel(
   }
 
   fun loadMoreBusinessData() {
-    searchBusiness(location, term)
+    searchBusiness(location, term, prices)
   }
 
   private fun onSuccess(businesses: List<BusinessEntity>) {
