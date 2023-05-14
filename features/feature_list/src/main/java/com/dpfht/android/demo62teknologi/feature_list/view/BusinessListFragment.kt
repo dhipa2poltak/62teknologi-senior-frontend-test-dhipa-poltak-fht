@@ -149,7 +149,7 @@ class BusinessListFragment: BaseFragment<BusinessListViewModel>() {
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     when (item.itemId) {
       R.id.itm_search -> {
-        val fragment = SearchBusinessDialogFragment.newInstance(viewModel.location, viewModel.term, viewModel.prices)
+        val fragment = SearchBusinessDialogFragment.newInstance(viewModel.location, viewModel.term, ArrayList(viewModel.prices))
         fragment.onClickSearchCallback = object : OnClickSearchCallback {
           override fun onClickSearch(location: String, term: String, prices: ArrayList<Boolean>) {
             showDescResult(location, term, prices)
