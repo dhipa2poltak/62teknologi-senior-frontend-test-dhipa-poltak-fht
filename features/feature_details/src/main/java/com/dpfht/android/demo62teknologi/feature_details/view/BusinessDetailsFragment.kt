@@ -77,19 +77,6 @@ class BusinessDetailsFragment: BaseFragment<BusinessDetailsViewModel>() {
     binding.rvReviews.layoutManager = layoutManager
     binding.rvReviews.adapter = adapter
 
-    binding.rvReviews.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-      override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-        val xx = recyclerView.computeVerticalScrollRange()
-        val xy = recyclerView.computeVerticalScrollOffset()
-        val xz = recyclerView.computeVerticalScrollExtent()
-        val zz = (xy.toFloat() / (xx - xz).toFloat() * 100).toInt()
-        if (zz >= 75 && !viewModel.isLoadingData()) {
-          viewModel.loadMoreReviews()
-        }
-        super.onScrolled(recyclerView, dx, dy)
-      }
-    })
-
     observeViewModel()
 
     arguments?.let {
